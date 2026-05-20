@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fatcom Solutions</title>  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #111827;
+    }
+
+    header {
+      background: #4338ca;
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-box {
+      width: 45px;
+      height: 45px;
+      background: white;
+      color: #4338ca;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 15px;
+    }
+
+    .hero {
+      padding: 80px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin: 20px 0;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      color: #4b5563;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      background: #4338ca;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 1px solid #d1d5db;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .earnings {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 10px 0 20px;
+    }
+
+    .task {
+      background: #f3f4f6;
+      padding: 18px;
+      border-radius: 16px;
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .features {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .features-grid {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 30px;
+      border-radius: 22px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .feature-box h3 {
+      margin: 15px 0;
+    }
+
+    .tasks-section {
+      padding: 80px 0;
+    }
+
+    .tasks-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .task-card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .task-card button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      background: #4338ca;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .withdraw {
+      padding: 80px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .withdraw-form {
+      background: #4338ca;
+      padding: 35px;
+      border-radius: 25px;
+      color: white;
+    }
+
+    .withdraw-form input {
+      width: 100%;
+      padding: 15px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .withdraw-form button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      background: white;
+      color: #4338ca;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style></head>
+<body>  <header>
+    <div class="container navbar">
+      <div class="logo">
+        <div class="logo-box">F</div>
+        <div>
+          <h2>Fatcom Solutions</h2>
+          <small>Online Earning Platform</small>
+        </div>
+      </div><nav>
+    <a href="#features">Features</a>
+    <a href="#tasks">Tasks</a>
+    <a href="#withdraw">Withdraw</a>
+  </nav>
+</div>
+
+  </header>  <section class="container hero">
+    <div>
+      <h1>Turn Your Free Time Into Daily Income</h1><p>
+    Fatcom Solutions helps users earn money online through referrals,
+    surveys, video watching, and daily online tasks.
+  </p>
+
+  <div class="buttons">
+    <button class="btn btn-primary" onclick="startNow()">
+      Get Started
+    </button>
+
+    <button class="btn btn-secondary">
+      Learn More
+    </button>
+  </div>
+</div>
+
+<div class="card">
+  <small>Total Earnings</small>
+  <div class="earnings">KES 48,520</div>
+
+  <div class="task">
+    <div>
+      <strong>Watch Videos</strong>
+      <p>Earn per completed video</p>
+    </div>
+
+    <strong>KES 150</strong>
+  </div>
+
+  <div class="task">
+    <div>
+      <strong>Daily Check-in</strong>
+      <p>Claim daily rewards</p>
+    </div>
+
+    <strong>KES 80</strong>
+  </div>
+
+  <div class="task">
+    <div>
+      <strong>Referral Bonus</strong>
+      <p>Invite friends to earn more</p>
+    </div>
+
+    <strong>KES 500</strong>
+  </div>
+</div>
+
+  </section>  <section class="features" id="features">
+    <div class="container">
+      <h2>Platform Features</h2><div class="features-grid">
+
+    <div class="feature-box">
+      <h3>💰 Easy Earnings</h3>
+      <p>Complete simple online activities and earn instantly.</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>📱 Mobile Friendly</h3>
+      <p>Works perfectly on both phone and desktop.</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>🔒 Secure Withdrawals</h3>
+      <p>Withdraw through M-Pesa and bank accounts safely.</p>
+    </div>
+
+  </div>
+</div>
+
+  </section>  <section class="tasks-section" id="tasks">
+    <div class="container">
+      <h2 style="text-align:center;">Popular Tasks</h2><div class="tasks-grid">
+
+    <div class="task-card">
+      <h3>Watch Ads</h3>
+      <p>Earn by watching sponsored advertisements.</p>
+      <button onclick="taskAlert()">Start Task</button>
+    </div>
+
+    <div class="task-card">
+      <h3>Referral Program</h3>
+      <p>Invite friends and earn bonuses.</p>
+      <button onclick="taskAlert()">Start Task</button>
+    </div>
+
+    <div class="task-card">
+      <h3>Surveys</h3>
+      <p>Answer surveys and get paid instantly.</p>
+      <button onclick="taskAlert()">Start Task</button>
+    </div>
+
+    <div class="task-card">
+      <h3>Social Tasks</h3>
+      <p>Follow and share social media posts.</p>
+      <button onclick="taskAlert()">Start Task</button>
+    </div>
+
+  </div>
+</div>
+
+  </section>  <section class="container withdraw" id="withdraw"><div>
+  <h2 style="font-size:40px; margin-bottom:20px;">
+    Fast & Reliable Payments
+  </h2>
+
+  <p style="font-size:18px; line-height:1.8; color:#4b5563;">
+    Fatcom Solutions supports secure withdrawal methods including
+    M-Pesa and bank transfers.
+  </p>
+</div>
+
+<div class="withdraw-form">
+  <h2>Withdraw Funds</h2>
+
+  <input type="text" placeholder="Full Name" />
+  <input type="number" placeholder="Amount" />
+  <input type="text" placeholder="M-Pesa Number" />
+
+  <button onclick="withdrawMoney()">
+    Request Withdrawal
+  </button>
+</div>
+
+  </section>  <footer>
+    <h2>Fatcom Solutions</h2>
+    <p>© 2026 Fatcom Solutions. All rights reserved.</p>
+  </footer>  <script>
+    function startNow() {
+      alert('Welcome to Fatcom Solutions!');
+    }
+
+    function taskAlert() {
+      alert('Task started successfully!');
+    }
+
+    function withdrawMoney() {
+      alert('Withdrawal request submitted!');
+    }
+  </script></body>
+  </html>
