@@ -56,3 +56,113 @@ export default function FatcomSolutions() {
             </button>
 
             <button className="border border-slate-300 hover:bg-slate-100 px-6 py-3 rounded-2xl font-semibold transition">
+              Learn More
+            </button>
+
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-200">
+
+          <div className="flex items-center justify-between mb-8">
+
+            <div>
+              <p className="text-slate-500 text-sm">
+                Total Earnings
+              </p>
+
+              <h3 className="text-4xl font-bold mt-1">
+                KES 48,520
+              </h3>
+            </div>
+
+            <div className="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">
+              +18% This Month
+            </div>
+
+          </div>
+
+          <div className="space-y-5">
+
+            <div className="bg-slate-100 rounded-2xl p-4 flex justify-between items-center">
+              <div>
+                <h4 className="font-semibold">Watch Videos</h4>
+                <p className="text-sm text-slate-500">
+                  Earn per completed video
+                </p>
+              </div>
+
+              <span className="font-bold text-indigo-700">
+                KES 150
+              </span>
+            </div>
+
+            <div className="bg-slate-100 rounded-2xl p-4 flex justify-between items-center">
+              <div>
+                <h4 className="font-semibold">Daily Check-in</h4>
+                <p className="text-sm text-slate-500">
+                  Claim daily rewards
+                </p>
+              </div>
+
+              <span className="font-bold text-indigo-700">
+                KES 80
+              </span>
+            </div>
+
+            <div className="bg-slate-100 rounded-2xl p-4 flex justify-between items-center">
+              <div>
+                <h4 className="font-semibold">Referral Bonus</h4>
+                <p className="text-sm text-slate-500">
+                  Invite friends to earn more
+                </p>
+              </div>
+
+              <span className="font-bold text-indigo-700">
+                KES 500
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Features */}
+      <section
+        id="features"
+        className="bg-white py-20"
+      >
+        <div className="max-w-7xl mx-auto px-6 text-center">
+
+          <h3 className="text-4xl font-bold">
+            Platform Features
+          </h3>
+
+          <p className="text-slate-600 mt-4 text-lg">
+            Everything you need to earn and withdraw securely.
+          </p>
+
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer
+        id="contact"
+        className="bg-slate-900 text-slate-300 py-10 text-center"
+      >
+
+        <h4 className="text-2xl font-bold text-white">
+          Fatcom Solutions
+        </h4>
+
+        <p className="mt-2 text-sm">
+          © 2026 Fatcom Solutions. All rights reserved.
+        </p>
+
+      </footer>
+
+    </div>
+  );
+        }
