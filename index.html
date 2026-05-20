@@ -406,32 +406,24 @@
       }
     }
   </style></head>
-<body>  <div class="app-shell"><header class="topbar">
+<body>  <div class="app-shell" id="home"><header class="topbar">
   <div class="top-left">
     <div class="logo-box">F</div>
-
     <div>
       <h2>Fatcom</h2>
       <small>Solutions</small>
     </div>
   </div>
-
-  <div class="balance-pill">
-    KES 48,520
-  </div>
+  <div class="balance-pill">KES 48,520</div>
 </header>
 
 <section class="welcome-card">
   <p class="small-text">Available Balance</p>
-
   <h1>KES 48,520</h1>
-
-  <p class="welcome-text">
-    Invest, earn and withdraw instantly.
-  </p>
+  <p class="welcome-text">Complete daily tasks and withdraw instantly.</p>
 
   <div class="action-buttons">
-    <button onclick="startNow()">Deposit</button>
+    <button onclick="depositPage()">Deposit</button>
     <button class="secondary-btn">Withdraw</button>
   </div>
 </section>
@@ -440,29 +432,15 @@
 
   <div class="investment-banner">
 
-    <img
-      src="https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=1200&auto=format&fit=crop"
-      alt="Investment"
-    />
+    <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=1200&auto=format&fit=crop" />
 
     <div class="investment-content">
       <h3>Premium Investment</h3>
 
       <div class="investment-details">
-        <div>
-          <small>Investment Period</small>
-          <strong>30 Days</strong>
-        </div>
-
-        <div>
-          <small>Daily Income</small>
-          <strong>KES 1,500</strong>
-        </div>
-
-        <div>
-          <small>Total Income</small>
-          <strong>KES 45,000</strong>
-        </div>
+        <div><small>Investment Period</small><strong>30 Days</strong></div>
+        <div><small>Daily Income</small><strong>KES 1,500</strong></div>
+        <div><small>Total Income</small><strong>KES 45,000</strong></div>
       </div>
 
       <div class="investment-bottom">
@@ -471,100 +449,71 @@
           <h4>KES 10,000</h4>
         </div>
 
-        <button onclick="investNow()">
-          Invest
-        </button>
+        <button onclick="investNow()">Invest</button>
       </div>
-
     </div>
-
-  </div>
-
-  <div class="investment-banner">
-
-    <img
-      src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
-      alt="Investment"
-    />
-
-    <div class="investment-content">
-      <h3>Starter Investment</h3>
-
-      <div class="investment-details">
-        <div>
-          <small>Investment Period</small>
-          <strong>15 Days</strong>
-        </div>
-
-        <div>
-          <small>Daily Income</small>
-          <strong>KES 500</strong>
-        </div>
-
-        <div>
-          <small>Total Income</small>
-          <strong>KES 7,500</strong>
-        </div>
-      </div>
-
-      <div class="investment-bottom">
-        <div>
-          <small>Investment Amount</small>
-          <h4>KES 5,000</h4>
-        </div>
-
-        <button onclick="investNow()">
-          Invest
-        </button>
-      </div>
-
-    </div>
-
   </div>
 
 </section>
 
+<nav class="bottom-nav">
+  <div class="nav-item active"><span>🏠</span><p>Home</p></div>
+  <div class="nav-item"><span>💰</span><p>Earnings</p></div>
+  <div class="nav-item"><span>👤</span><p>Profile</p></div>
+</nav>
 
+  </div>  <!-- DEPOSIT PAGE -->  <div class="app-shell" id="deposit" style="display:none;"><header class="topbar">
+  <div class="top-left">
+    <div class="logo-box">F</div>
+    <div>
+      <h2>Deposit</h2>
+      <small>Fund your account</small>
+    </div>
+  </div>
+</header>
 
+<section class="withdraw-box" style="margin-top:20px;">
+  <h3>Make a Deposit</h3>
 
+  <p style="font-size:13px;color:#6b7280;margin-bottom:10px;">
+    Minimum: KES 320 | Maximum: KES 30,000
+  </p>
+
+  <input type="number" id="amount" placeholder="Enter Amount" min="320" max="30000" />
+
+  <button onclick="makeDeposit()">Deposit to Till 8808802</button>
+</section>
 
 <nav class="bottom-nav">
-  <div class="nav-item active">
-    <span>🏠</span>
-    <p>Home</p>
-  </div>
-
-  <div class="nav-item">
-    <span>📋</span>
-    <p>Tasks</p>
-  </div>
-
-  <div class="nav-item">
-    <span>💰</span>
-    <p>Earnings</p>
-  </div>
-
-  <div class="nav-item">
-    <span>👤</span>
-    <p>Profile</p>
-  </div>
+  <div class="nav-item" onclick="goHome()"><span>🏠</span><p>Home</p></div>
+  <div class="nav-item active"><span>💰</span><p>Deposit</p></div>
+  <div class="nav-item"><span>👤</span><p>Profile</p></div>
 </nav>
 
   </div>  <script>
-    function startNow() {
-      alert('Welcome to Fatcom Solutions!');
-    }
-
-    function taskAlert() {
-      alert('Task started successfully!');
-    }
-
-    function withdrawMoney() {
-      alert('Withdrawal request submitted!');
-    }
-
     function investNow() {
       alert('Investment activated successfully!');
     }
+
+    function depositPage() {
+      document.getElementById('home').style.display = 'none';
+      document.getElementById('deposit').style.display = 'block';
+    }
+
+    function goHome() {
+      document.getElementById('deposit').style.display = 'none';
+      document.getElementById('home').style.display = 'block';
+    }
+
+    function makeDeposit() {
+      const amount = document.getElementById('amount').value;
+
+      if (!amount || amount < 320 || amount > 30000) {
+        alert('Enter a valid amount between 320 and 30,000');
+        return;
+      }
+
+      alert('Send KES ' + amount + ' to Till Number 8808802 to complete deposit');
+    }
   </script></body>
-                           </html>
+  </html>
