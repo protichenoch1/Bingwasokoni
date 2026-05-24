@@ -1,796 +1,973 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fatcom Solutions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatcom Solutions</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial,sans-serif;
-    }
+<style>
 
-    body{
-      background:#f3f4f6;
-      color:#111827;
-      width:100%;
-      min-height:100vh;
-      overflow-x:hidden;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-    .app-shell{
-      width:100%;
-      min-height:100vh;
-      background:#f8fafc;
-      padding-bottom:90px;
-    }
+body{
+background:#f3f4f6;
+color:#111827;
+overflow-x:hidden;
+}
 
-    .topbar{
-      background:linear-gradient(135deg,#312e81,#4338ca);
-      color:white;
-      padding:25px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
+.page{
+display:none;
+min-height:100vh;
+padding-bottom:90px;
+background:#f8fafc;
+}
 
-    .top-left{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
+.active-page{
+display:block;
+}
 
-    .logo-box{
-      width:55px;
-      height:55px;
-      border-radius:18px;
-      background:white;
-      color:#312e81;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:30px;
-      font-weight:bold;
-    }
+.topbar{
+background:linear-gradient(135deg,#312e81,#4338ca);
+padding:25px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+}
 
-    .balance-pill{
-      background:rgba(255,255,255,0.2);
-      padding:12px 18px;
-      border-radius:16px;
-      font-weight:bold;
-    }
+.top-left{
+display:flex;
+align-items:center;
+gap:12px;
+}
 
-    .welcome-card{
-      background:white;
-      margin:20px;
-      border-radius:28px;
-      padding:25px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    }
+.logo-box{
+width:55px;
+height:55px;
+border-radius:18px;
+background:white;
+color:#312e81;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+font-weight:bold;
+}
 
-    .small-text{
-      color:#6b7280;
-      font-size:14px;
-    }
+.balance-pill{
+background:rgba(255,255,255,0.2);
+padding:12px 18px;
+border-radius:16px;
+font-weight:bold;
+}
 
-    .welcome-card h1{
-      font-size:52px;
-      margin:10px 0;
-    }
+.card{
+background:white;
+margin:20px;
+padding:25px;
+border-radius:28px;
+box-shadow:0 8px 20px rgba(0,0,0,0.06);
+}
 
-    .welcome-text{
-      color:#4b5563;
-      line-height:1.7;
-      margin-top:10px;
-    }
+.balance-title{
+color:#6b7280;
+font-size:14px;
+}
 
-    .action-buttons{
-      display:flex;
-      gap:15px;
-      margin-top:25px;
-    }
+.balance-amount{
+font-size:25px;
+margin:12px 0;
+}
 
-    .action-buttons button{
-      flex:1;
-      padding:15px;
-      border:none;
-      border-radius:18px;
-      font-size:16px;
-      font-weight:bold;
-      cursor:pointer;
-    }
+.action-buttons{
+display:flex;
+gap:15px;
+margin-top:25px;
+}
 
-    .action-buttons button:first-child{
-      background:#4338ca;
-      color:white;
-    }
+.action-buttons button{
+flex:1;
+padding:15px;
+border:none;
+border-radius:16px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
 
-    .secondary-btn{
-      background:#eef2ff;
-      color:#4338ca;
-    }
+.primary-btn{
+background:#4338ca;
+color:white;
+}
 
-    .investment-section{
-      padding:0 20px;
-    }
+.secondary-btn{
+background:#eef2ff;
+color:#4338ca;
+}
 
-    .investment-banner{
-      background:white;
-      border:2px solid #6366f1;
-      border-radius:24px;
-      overflow:hidden;
-      margin-bottom:20px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.06);
-    }
+.investment-banner{
+background:white;
+border:2px solid #6366f1;
+border-radius:24px;
+overflow:hidden;
+margin:20px;
+box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
 
-    .investment-banner img{
-      width:100%;
-      height:180px;
-      object-fit:cover;
-    }
+.investment-banner img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
 
-    .investment-content{
-      padding:18px;
-    }
+.investment-content{
+padding:18px;
+}
 
-    .investment-content h3{
-      color:#4338ca;
-      margin-bottom:16px;
-      font-size:28px;
-    }
+.investment-content h3{
+color:#4338ca;
+margin-bottom:16px;
+}
 
-    .investment-details{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      margin-bottom:20px;
-    }
+.investment-details{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-bottom:20px;
+}
 
-    .investment-details div{
-      background:#f5f3ff;
-      border-radius:16px;
-      padding:12px;
-      text-align:center;
-    }
+.investment-details div{
+background:#f5f3ff;
+padding:12px;
+border-radius:14px;
+text-align:center;
+}
 
-    .investment-details small{
-      display:block;
-      color:#6b7280;
-      font-size:10px;
-      margin-bottom:5px;
-    }
+.investment-details small{
+display:block;
+font-size:10px;
+color:#6b7280;
+margin-bottom:5px;
+}
 
-    .investment-details strong{
-      color:#4338ca;
-      font-size:14px;
-    }
+.investment-details strong{
+font-size:13px;
+color:#4338ca;
+}
 
-    .investment-bottom{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
+.investment-bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
 
-    .investment-bottom button{
-      background:#4338ca;
-      color:white;
-      border:none;
-      padding:12px 22px;
-      border-radius:14px;
-      font-weight:bold;
-      cursor:pointer;
-    }
+.invest-btn{
+background:#4338ca;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:14px;
+font-weight:bold;
+cursor:pointer;
+}
 
-    .bottom-nav{
-      position:fixed;
-      bottom:0;
-      left:0;
-      right:0;
-      width:100%;
-      background:white;
-      display:flex;
-      justify-content:space-around;
-      padding:14px 0;
-      border-top:1px solid #e5e7eb;
-    }
+.amount-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin:20px 0;
+}
 
-    .nav-item{
-      text-align:center;
-      color:#6b7280;
-      font-size:12px;
-      cursor:pointer;
-    }
+.amount-btn{
+background:#eef2ff;
+color:#4338ca;
+border:none;
+padding:16px 10px;
+border-radius:14px;
+font-weight:bold;
+cursor:pointer;
+}
 
-    .nav-item span{
-      display:block;
-      font-size:24px;
-      margin-bottom:4px;
-    }
+.input-box{
+display:flex;
+align-items:center;
+border:1px solid #d1d5db;
+border-radius:14px;
+overflow:hidden;
+margin-bottom:20px;
+background:white;
+}
 
-    .active{
-      color:#4338ca;
-      font-weight:bold;
-    }
+.input-prefix{
+padding:15px;
+background:#eef2ff;
+font-weight:bold;
+color:#4338ca;
+}
 
-    .withdraw-box{
-      background:white;
-      margin:20px;
-      padding:25px;
-      border-radius:24px;
-      box-shadow:0 5px 15px rgba(0,0,0,0.05);
-    }
+.input-box input{
+flex:1;
+border:none;
+padding:15px;
+font-size:16px;
+outline:none;
+}
 
-    .withdraw-box h3{
-      margin-bottom:15px;
-    }
+.info-box{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#f5f3ff;
+padding:16px;
+border-radius:16px;
+margin-bottom:25px;
+}
 
-    .withdraw-box input{
-      width:100%;
-      padding:15px;
-      border-radius:14px;
-      border:1px solid #d1d5db;
-      margin-bottom:15px;
-      font-size:16px;
-    }
+.submit-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+background:#4338ca;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
 
-    .withdraw-box button{
-      width:100%;
-      padding:15px;
-      border:none;
-      border-radius:14px;
-      background:#4338ca;
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-    }
+.rules-box{
+background:#f5f3ff;
+padding:18px;
+border-radius:16px;
+margin-top:20px;
+line-height:1.9;
+font-size:14px;
+}
 
-    .popup{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.5);
-      display:none;
-      justify-content:center;
-      align-items:center;
-      z-index:9999;
-    }
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:14px 0;
+border-top:1px solid #e5e7eb;
+}
 
-    .popup-box{
-      background:white;
-      width:85%;
-      max-width:320px;
-      padding:25px;
-      border-radius:20px;
-      text-align:center;
-    }
+.nav-item{
+text-align:center;
+font-size:12px;
+color:#6b7280;
+cursor:pointer;
+}
 
-    .popup-box p{
-      margin-bottom:20px;
-      font-size:16px;
-    }
+.nav-item span{
+display:block;
+font-size:24px;
+margin-bottom:4px;
+}
 
-    .popup-box button{
-      background:#4338ca;
-      color:white;
-      border:none;
-      padding:12px 25px;
-      border-radius:12px;
-      font-weight:bold;
-    }
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
 
-  </style>
+.popup-box{
+background:white;
+width:85%;
+max-width:320px;
+padding:25px;
+border-radius:20px;
+text-align:center;
+}
+
+.popup-box p{
+margin-bottom:20px;
+line-height:1.7;
+}
+
+.popup-box button{
+background:#4338ca;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:12px;
+font-weight:bold;
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- HOME -->
-  <div class="app-shell" id="home">
+<!-- HOME PAGE -->
+<div class="page active-page" id="homePage">
 
-    <header class="topbar">
-      <div class="top-left">
-        <div class="logo-box">F</div>
+<header class="topbar">
 
-        <div>
-          <h2>Fatcom</h2>
-          <small>Solutions</small>
-        </div>
-      </div>
+<div class="top-left">
 
-      <div class="balance-pill">
-        KES 0
-      </div>
-    </header>
+<div class="logo-box">F</div>
 
-    <section class="welcome-card">
-      <p class="small-text">Available Balance</p>
+<div>
+<h2>Fatcom</h2>
+<small>Solutions</small>
+</div>
 
-      <h1>KES 0</h1>
+</div>
 
-      <p class="welcome-text">
-        Invest and earn daily income automatically.
-      </p>
+<div class="balance-pill" id="topBalance">
+KES 0
+</div>
 
-      <div class="action-buttons">
-        <button onclick="depositPage()">
-          Deposit
-        </button>
+</header>
 
-        <button class="secondary-btn">
-          Withdraw
-        </button>
-      </div>
-    </section>
+<div class="card">
 
-    <section class="investment-section">
+<p class="balance-title">
+Available Balance
+</p>
 
-      <div class="investment-banner">
+<h1 class="balance-amount" id="mainBalance">
+KES 0
+</h1>
 
-        <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=1200&auto=format&fit=crop">
+<p>
+Invest and earn daily income automatically.
+</p>
 
-        <div class="investment-content">
+<div class="action-buttons">
 
-          <h3>Starter Investment</h3>
+<button class="primary-btn" onclick="openPage('depositPage')">
+Deposit
+</button>
 
-          <div class="investment-details">
+<button class="secondary-btn" onclick="openPage('withdrawPage')">
+Withdraw
+</button>
 
-            <div>
-              <small>Investment Period</small>
-              <strong>15 Days</strong>
-            </div>
+</div>
 
-            <div>
-              <small>Daily Income</small>
-              <strong>KES 500</strong>
-            </div>
+</div>
 
-            <div>
-              <small>Total Income</small>
-              <strong>KES 7,500</strong>
-            </div>
+<div class="investment-banner">
 
-          </div>
+<img src="https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=1200&auto=format&fit=crop">
 
-          <div class="investment-bottom">
+<div class="investment-content">
 
-            <div>
-              <small>Investment Amount</small>
-              <h4>KES 5,000</h4>
-            </div>
+<h3>Starter Investment</h3>
 
-            <button onclick="investNow()">
-              Invest
-            </button>
+<div class="investment-details">
 
-          </div>
+<div>
+<small>Investment Period</small>
+<strong>15 Days</strong>
+</div>
 
-        </div>
-      </div>
+<div>
+<small>Daily Income</small>
+<strong>KES 500</strong>
+</div>
 
-      <div class="investment-banner">
+<div>
+<small>Total Income</small>
+<strong>KES 7,500</strong>
+</div>
 
-        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop">
+</div>
 
-        <div class="investment-content">
+<div class="investment-bottom">
 
-          <h3>Premium Investment</h3>
+<div>
+<small>Investment Amount</small>
+<h4>KES 5,000</h4>
+</div>
 
-          <div class="investment-details">
+<button class="invest-btn" onclick="buyInvestment('Starter Investment',5000,500)">
+Invest
+</button>
 
-            <div>
-              <small>Investment Period</small>
-              <strong>30 Days</strong>
-            </div>
+</div>
 
-            <div>
-              <small>Daily Income</small>
-              <strong>KES 1,500</strong>
-            </div>
+</div>
 
-            <div>
-              <small>Total Income</small>
-              <strong>KES 45,000</strong>
-            </div>
+</div>
 
-          </div>
+<div class="investment-banner">
 
-          <div class="investment-bottom">
+<img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop">
 
-            <div>
-              <small>Investment Amount</small>
-              <h4>KES 10,000</h4>
-            </div>
+<div class="investment-content">
 
-            <button onclick="investNow()">
-              Invest
-            </button>
+<h3>Premium Investment</h3>
 
-          </div>
+<div class="investment-details">
 
-        </div>
-      </div>
+<div>
+<small>Investment Period</small>
+<strong>30 Days</strong>
+</div>
 
-    </section>
+<div>
+<small>Daily Income</small>
+<strong>KES 1,500</strong>
+</div>
 
-    <nav class="bottom-nav">
+<div>
+<small>Total Income</small>
+<strong>KES 45,000</strong>
+</div>
 
-      <div class="nav-item active" onclick="goHome()">
-        <span>🏠</span>
-        <p>Home</p>
-      </div>
+</div>
 
-      <div class="nav-item" onclick="earningsPage()">
-        <span>💰</span>
-        <p>Earnings</p>
-      </div>
+<div class="investment-bottom">
 
-      <div class="nav-item">
-        <span>👤</span>
-        <p>Profile</p>
-      </div>
+<div>
+<small>Investment Amount</small>
+<h4>KES 15,000</h4>
+</div>
 
-    </nav>
+<button class="invest-btn" onclick="buyInvestment('Premium Investment',15000,1500)">
+Invest
+</button>
 
-  </div>
+</div>
 
-  <!-- DEPOSIT PAGE -->
-  <div class="app-shell" id="deposit" style="display:none;">
+</div>
 
-    <header class="topbar">
-      <div class="top-left">
+</div>
 
-        <div class="logo-box">F</div>
+</div>
 
-        <div>
-          <h2>Deposit</h2>
-          <small>Fund Account</small>
-        </div>
+<!-- DEPOSIT PAGE -->
+<div class="page" id="depositPage">
 
-      </div>
-    </header>
+<header class="topbar">
 
-    <section class="withdraw-box">
+<div class="top-left">
 
-      <h3>Make Deposit</h3>
+<div class="logo-box">F</div>
 
-      <p style="margin-bottom:15px;color:#6b7280;">
-        Minimum KES 320 | Maximum KES 30,000
-      </p>
+<div>
+<h2>Deposit</h2>
+<small>Fund Account</small>
+</div>
 
-      <input
-        type="number"
-        id="amount"
-        placeholder="Enter Amount"
-      >
+</div>
 
-      <button onclick="makeDeposit()">
-        Deposit to Till 8808802
-      </button>
+</header>
 
-    </section>
+<div class="card">
 
-    <nav class="bottom-nav">
+<h2 style="text-align:center;color:#4338ca;">
+Deposit
+</h2>
 
-      <div class="nav-item" onclick="goHome()">
-        <span>🏠</span>
-        <p>Home</p>
-      </div>
+<h3 style="margin-top:25px;">
+Deposit Amount
+</h3>
 
-      <div class="nav-item active">
-        <span>💰</span>
-        <p>Deposit</p>
-      </div>
+<div class="amount-grid">
 
-      <div class="nav-item">
-        <span>👤</span>
-        <p>Profile</p>
-      </div>
+<button class="amount-btn" onclick="setAmount(350)">350</button>
+<button class="amount-btn" onclick="setAmount(1000)">1,000</button>
+<button class="amount-btn" onclick="setAmount(2500)">2,500</button>
+<button class="amount-btn" onclick="setAmount(5000)">5,000</button>
+<button class="amount-btn" onclick="setAmount(15000)">15,000</button>
+<button class="amount-btn" onclick="setAmount(30000)">30,000</button>
 
-    </nav>
+</div>
 
-  </div>
+<div class="input-box">
 
-  <!-- EARNINGS -->
-  <div class="app-shell" id="earnings" style="display:none;">
+<div class="input-prefix">
+KES
+</div>
 
-    <header class="topbar">
+<input
+type="number"
+id="depositAmount"
+placeholder="Enter amount to deposit"
+/>
 
-      <div class="top-left">
+</div>
 
-        <div class="logo-box">F</div>
+<div class="info-box">
 
-        <div>
-          <h2>Earnings</h2>
-          <small>Investment Profits</small>
-        </div>
+<span>
+Till Number
+</span>
 
-      </div>
+<strong style="color:#4338ca;font-size:20px;">
+8808802
+</strong>
 
-      <div class="balance-pill">
-        KES 0
-      </div>
+</div>
 
-    </header>
+<button class="submit-btn" onclick="makeDeposit()">
+DEPOSIT
+</button>
 
-    <section class="investment-section">
-    </section>
+</div>
 
-    <nav class="bottom-nav">
+</div>
 
-      <div class="nav-item" onclick="goHome()">
-        <span>🏠</span>
-        <p>Home</p>
-      </div>
+<!-- WITHDRAW PAGE -->
+<div class="page" id="withdrawPage">
 
-      <div class="nav-item active">
-        <span>💰</span>
-        <p>Earnings</p>
-      </div>
+<header class="topbar">
 
-      <div class="nav-item">
-        <span>👤</span>
-        <p>Profile</p>
-      </div>
+<div class="top-left">
 
-    </nav>
+<div class="logo-box">F</div>
 
-  </div>
+<div>
+<h2>Withdraw</h2>
+<small>Withdraw Earnings</small>
+</div>
 
-  <!-- POPUP -->
-  <div id="popup" class="popup">
+</div>
 
-    <div class="popup-box">
+<div class="balance-pill" id="withdrawTop">
+KES 0
+</div>
 
-      <p id="popup-text"></p>
+</header>
 
-      <button onclick="closePopup()">
-        OK
-      </button>
+<div class="card">
 
-    </div>
+<h2 style="text-align:center;color:#4338ca;">
+Withdraw
+</h2>
 
-  </div>
+<h3 style="margin-top:25px;">
+Available Balance
+</h3>
 
-  <script>
+<h1 class="balance-amount">
+KES <span id="withdrawBalance">0</span>
+</h1>
 
-    let walletBalance =
-      Number(localStorage.getItem('walletBalance')) || 0;
+<h3 style="margin-bottom:15px;">
+M-Pesa Number
+</h3>
 
-    let investments =
-      JSON.parse(localStorage.getItem('investments')) || [];
+<div class="input-box">
 
-    updateBalance();
-    renderEarnings();
+<div class="input-prefix">
++254
+</div>
 
-    function showMessage(message){
-      document.getElementById('popup-text').innerText = message;
+<input
+type="number"
+id="mpesaNumber"
+placeholder="Enter M-Pesa number"
+/>
 
-      document.getElementById('popup').style.display = 'flex';
-    }
+</div>
 
-    function closePopup(){
-      document.getElementById('popup').style.display = 'none';
-    }
+<div class="input-box">
 
-    function updateBalance(){
+<div class="input-prefix">
+KES
+</div>
 
-      const balanceTexts =
-        document.querySelectorAll('.balance-pill');
+<input
+type="number"
+id="withdrawAmount"
+placeholder="Enter withdrawal amount"
+/>
 
-      balanceTexts.forEach(item=>{
-        item.innerText =
-          'KES ' + walletBalance.toLocaleString();
-      });
+</div>
 
-      const mainBalance =
-        document.querySelector('.welcome-card h1');
+<button class="submit-btn" onclick="withdrawMoney()">
+WITHDRAW
+</button>
 
-      if(mainBalance){
-        mainBalance.innerText =
-          'KES ' + walletBalance.toLocaleString();
-      }
+<div class="rules-box">
 
-    }
+<h3 style="color:#4338ca;margin-bottom:15px;">
+Withdrawal Rules
+</h3>
 
-    function depositPage(){
+<p>• Minimum withdrawal amount is KES 350</p>
 
-      document.getElementById('home').style.display = 'none';
+<p>• 10% withdrawal fee is charged on every withdrawal</p>
 
-      document.getElementById('earnings').style.display = 'none';
+<p>• Example: Withdraw KES 350 → Receive KES 315</p>
 
-      document.getElementById('deposit').style.display = 'block';
+</div>
 
-    }
+</div>
 
-    function earningsPage(){
+</div>
 
-      document.getElementById('home').style.display = 'none';
+<!-- EARNINGS PAGE -->
+<div class="page" id="earningsPage">
 
-      document.getElementById('deposit').style.display = 'none';
+<header class="topbar">
 
-      document.getElementById('earnings').style.display = 'block';
+<div class="top-left">
 
-      renderEarnings();
+<div class="logo-box">F</div>
 
-    }
+<div>
+<h2>Earnings</h2>
+<small>Investment Profits</small>
+</div>
 
-    function goHome(){
+</div>
 
-      document.getElementById('deposit').style.display = 'none';
+</header>
 
-      document.getElementById('earnings').style.display = 'none';
+<div id="earningsContainer"></div>
 
-      document.getElementById('home').style.display = 'block';
+</div>
 
-    }
+<!-- NAVIGATION -->
+<nav class="bottom-nav">
 
-    function makeDeposit(){
+<div class="nav-item" onclick="openPage('homePage')">
+<span>🏠</span>
+<p>Home</p>
+</div>
 
-      const amount =
-        Number(document.getElementById('amount').value);
+<div class="nav-item" onclick="openPage('depositPage')">
+<span>💳</span>
+<p>Deposit</p>
+</div>
 
-      if(!amount || amount < 320 || amount > 30000){
+<div class="nav-item" onclick="openPage('withdrawPage')">
+<span>💸</span>
+<p>Withdraw</p>
+</div>
 
-        showMessage(
-          'Enter amount between KES 320 and KES 30,000'
-        );
+<div class="nav-item" onclick="openPage('earningsPage');renderEarnings();">
+<span>💰</span>
+<p>Earnings</p>
+</div>
 
-        return;
-      }
+</nav>
 
-      walletBalance += amount;
+<!-- POPUP -->
+<div class="popup" id="popup">
 
-      localStorage.setItem(
-        'walletBalance',
-        walletBalance
-      );
+<div class="popup-box">
 
-      updateBalance();
+<p id="popupText"></p>
 
-      showMessage(
-        'Send KES ' +
-        amount +
-        ' to Till Number 8808802'
-      );
+<button onclick="closePopup()">
+OK
+</button>
 
-      document.getElementById('amount').value = '';
+</div>
 
-      goHome();
+</div>
 
-    }
+<script>
 
-    function investNow(){
+let walletBalance =
+Number(localStorage.getItem('walletBalance')) || 0;
 
-      if(walletBalance < 5000){
+let investments =
+JSON.parse(localStorage.getItem('investments')) || [];
 
-        showMessage(
-          'Insufficient balance. Deposit funds first.'
-        );
+updateBalance();
 
-        return;
-      }
+function updateBalance(){
 
-      const investment = {
-        name:'Starter Investment',
-        dailyIncome:500,
-        days:2,
-        totalIncome:1000,
-        status:'Running'
-      };
+document.getElementById('topBalance').innerText =
+'KES ' + walletBalance.toLocaleString();
 
-      investments.push(investment);
+document.getElementById('mainBalance').innerText =
+'KES ' + walletBalance.toLocaleString();
 
-      localStorage.setItem(
-        'investments',
-        JSON.stringify(investments)
-      );
+document.getElementById('withdrawBalance').innerText =
+walletBalance.toLocaleString();
 
-      walletBalance -= 5000;
+document.getElementById('withdrawTop').innerText =
+'KES ' + walletBalance.toLocaleString();
 
-      localStorage.setItem(
-        'walletBalance',
-        walletBalance
-      );
+}
 
-      updateBalance();
+function openPage(pageId){
 
-      renderEarnings();
+document.querySelectorAll('.page').forEach(page=>{
 
-      showMessage(
-        'Investment activated successfully!'
-      );
+page.classList.remove('active-page');
 
-    }
+});
 
-    function renderEarnings(){
+document.getElementById(pageId).classList.add('active-page');
 
-      const container =
-        document.querySelector(
-          '#earnings .investment-section'
-        );
+updateBalance();
 
-      if(!container) return;
+}
 
-      if(investments.length === 0){
+function setAmount(amount){
 
-        container.innerHTML = `
-          <div class="investment-banner">
+document.getElementById('depositAmount').value =
+amount;
 
-            <div class="investment-content">
+}
 
-              <h3>No Active Investments</h3>
+function makeDeposit(){
 
-              <p style="margin-top:10px;color:#6b7280;">
-                Deposit funds and activate an investment package.
-              </p>
+const amount =
+Number(document.getElementById('depositAmount').value);
 
-            </div>
+if(!amount || amount < 320 || amount > 30000){
 
-          </div>
-        `;
+showPopup(
+'Enter amount between KES 320 and KES 30,000'
+);
 
-        return;
-      }
+return;
 
-      let html = '';
+}
 
-      investments.forEach(item=>{
+showPopup(
+'Send KES ' +
+amount +
+' to Till Number 8808802'
+);
 
-        html += `
-          <div class="investment-banner">
+}
 
-            <div class="investment-content">
+function buyInvestment(name,amount,daily){
 
-              <h3>${item.name}</h3>
+if(walletBalance < amount){
 
-              <div class="investment-details">
+showPopup(
+'Insufficient balance. Deposit funds first.'
+);
 
-                <div>
-                  <small>Today's Income</small>
-                  <strong>KES ${item.dailyIncome}</strong>
-                </div>
+return;
 
-                <div>
-                  <small>Days Active</small>
-                  <strong>${item.days} Days</strong>
-                </div>
+}
 
-                <div>
-                  <small>Total Income</small>
-                  <strong>KES ${item.totalIncome}</strong>
-                </div>
+walletBalance -= amount;
 
-              </div>
+const investment = {
 
-              <div class="investment-bottom">
+name:name,
+amount:amount,
+daily:daily,
+startDate:Date.now()
 
-                <div>
-                  <small>Status</small>
-                  <h4>${item.status}</h4>
-                </div>
+};
 
-                <button>
-                  Active
-                </button>
+investments.push(investment);
 
-              </div>
+localStorage.setItem(
+'walletBalance',
+walletBalance
+);
 
-            </div>
+localStorage.setItem(
+'investments',
+JSON.stringify(investments)
+);
 
-          </div>
-        `;
+updateBalance();
 
-      });
+renderEarnings();
 
-      container.innerHTML = html;
+showPopup(
+name + ' activated successfully!'
+);
 
-    }
+}
 
-  </script>
+function renderEarnings(){
+
+const container =
+document.getElementById('earningsContainer');
+
+if(investments.length === 0){
+
+container.innerHTML = `
+<div class="card">
+<h2>No Active Investments</h2>
+<p style="margin-top:10px;color:#6b7280;">
+Deposit funds and activate an investment package.
+</p>
+</div>
+`;
+
+return;
+
+}
+
+let html = '';
+
+investments.forEach(item=>{
+
+const days =
+Math.floor(
+(Date.now() - item.startDate) /
+(1000*60*60*24)
+);
+
+const totalIncome =
+days * item.daily;
+
+html += `
+<div class="investment-banner">
+
+<div class="investment-content">
+
+<h3>${item.name}</h3>
+
+<div class="investment-details">
+
+<div>
+<small>Today's Income</small>
+<strong>KES ${item.daily}</strong>
+</div>
+
+<div>
+<small>Days Active</small>
+<strong>${days} Days</strong>
+</div>
+
+<div>
+<small>Total Income</small>
+<strong>KES ${totalIncome}</strong>
+</div>
+
+</div>
+
+<div class="investment-bottom">
+
+<div>
+<small>Investment Amount</small>
+<h4>KES ${item.amount}</h4>
+</div>
+
+<button class="invest-btn">
+Active
+</button>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+});
+
+container.innerHTML = html;
+
+}
+
+function withdrawMoney(){
+
+const mpesa =
+document.getElementById('mpesaNumber').value;
+
+const amount =
+Number(document.getElementById('withdrawAmount').value);
+
+if(!mpesa){
+
+showPopup(
+'Enter M-Pesa number'
+);
+
+return;
+
+}
+
+if(mpesa.length < 9){
+
+showPopup(
+'Enter valid M-Pesa number'
+);
+
+return;
+
+}
+
+if(!amount || amount < 350){
+
+showPopup(
+'Minimum withdrawal amount is KES 350'
+);
+
+return;
+
+}
+
+if(walletBalance < amount){
+
+showPopup(
+'Insufficient balance'
+);
+
+return;
+
+}
+
+const fee =
+amount * 0.10;
+
+const receive =
+amount - fee;
+
+walletBalance -= amount;
+
+localStorage.setItem(
+'walletBalance',
+walletBalance
+);
+
+updateBalance();
+
+showPopup(
+'Withdrawal Successful\n\n' +
+'Withdrawal Amount: KES ' + amount +
+'\nFee Charged: KES ' + fee +
+'\nAmount Received: KES ' + receive
+);
+
+}
+
+function showPopup(message){
+
+document.getElementById('popupText').innerText =
+message;
+
+document.getElementById('popup').style.display =
+'flex';
+
+}
+
+function closePopup(){
+
+document.getElementById('popup').style.display =
+'none';
+
+}
+
+</script>
 
 </body>
-          </html>
+  </html>
