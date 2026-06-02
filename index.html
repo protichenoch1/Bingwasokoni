@@ -84,6 +84,35 @@ font-weight:bold;
 cursor:pointer;
 }
 
+  .plan-card{
+background:white;
+padding:18px;
+border-radius:16px;
+margin-bottom:15px;
+border:2px solid #4f46e5;
+box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.plan-card h3{
+color:#4f46e5;
+margin-bottom:10px;
+}
+
+.plan-card p{
+margin:6px 0;
+}
+
+.plan-card button{
+width:100%;
+margin-top:12px;
+padding:12px;
+border:none;
+background:#4f46e5;
+color:white;
+border-radius:10px;
+font-weight:bold;
+}
+
 </style>
 </head>
 
@@ -137,6 +166,159 @@ walletBalance;
 document.getElementById('mainBalance').innerText =
 walletBalance;
 
+  <!-- BASIC PLANS -->
+
+<div style="
+padding:15px;
+">
+
+<h2 style="
+margin-bottom:15px;
+color:#4f46e5;
+">
+Basic Plans
+</h2>
+
+<div class="plan-card">
+
+<h3>KES 350</h3>
+
+<p>Investment Period: 4 Days</p>
+
+<p>Daily Income: KES 162.50</p>
+
+<p>Total Income: KES 650</p>
+
+<button onclick="investPlan(350,4,162.5)">
+Invest
+</button>
+
+</div>
+
+<div class="plan-card">
+
+<h3>KES 1,500</h3>
+
+<p>Investment Period: 7 Days</p>
+
+<p>Daily Income: KES 400</p>
+
+<p>Total Income: KES 2,800</p>
+
+<button onclick="investPlan(1500,7,400)">
+Invest
+</button>
+
+</div>
+
+<div class="plan-card">
+
+<h3>KES 4,000</h3>
+
+<p>Investment Period: 10 Days</p>
+
+<p>Daily Income: KES 600</p>
+
+<p>Total Income: KES 6,000</p>
+
+<button onclick="investPlan(4000,10,600)">
+Invest
+</button>
+
+</div>
+
+<div class="plan-card">
+
+<h3>KES 15,000</h3>
+
+<p>Investment Period: 15 Days</p>
+
+<p>Daily Income: KES 1,800</p>
+
+<p>Total Income: KES 27,000</p>
+
+<button onclick="investPlan(15000,15,1800)">
+Invest
+</button>
+
+</div>
+
+</div>
+
+<!-- VIP PLANS -->
+
+<div style="
+padding:15px;
+">
+
+<h2 style="
+margin-bottom:15px;
+color:#4f46e5;
+">
+VIP Plans
+</h2>
+
+<div class="plan-card">
+
+<h3>KES 25,000</h3>
+
+<p>Investment Period: 20 Days</p>
+
+<p>Daily Income: KES 2,000</p>
+
+<p>Total Income: KES 40,000</p>
+
+<button onclick="investPlan(25000,20,2000)">
+Invest
+</button>
+
+  function investPlan(amount,days,daily){
+
+alert(
+'Investment Amount: KES ' +
+amount +
+'\nDays: ' +
+days +
+'\nDaily Income: KES ' +
+daily
+);
+
+  }
+</div>
+
+<div class="plan-card">
+
+<h3>KES 30,000</h3>
+
+<p>Investment Period: 25 Days</p>
+
+<p>Daily Income: KES 2,320</p>
+
+<p>Total Income: KES 58,000</p>
+
+<button onclick="investPlan(30000,25,2320)">
+Invest
+</button>
+
+</div>
+
+<div class="plan-card">
+
+<h3>KES 35,000</h3>
+
+<p>Investment Period: 30 Days</p>
+
+<p>Daily Income: KES 2,500</p>
+
+<p>Total Income: KES 75,000</p>
+
+<button onclick="investPlan(35000,30,2500)">
+Invest
+</button>
+
+</div>
+
+</div>
 </script>
 
 </body>
