@@ -111,8 +111,7 @@ background:#4f46e5;
 color:white;
 border-radius:10px;
 font-weight:bold;
-}
-
+  }
   .bottom-nav{
 position:fixed;
 bottom:0;
@@ -138,6 +137,67 @@ font-size:12px;
 margin-top:4px;
 }
 
+  .page{
+display:none;
+padding-bottom:90px;
+}
+
+.active-page{
+display:block;
+}
+
+.page-header{
+background:#4f46e5;
+color:white;
+padding:20px;
+}
+
+.page-card{
+background:white;
+margin:15px;
+padding:20px;
+border-radius:16px;
+}
+
+.amount-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin:15px 0;
+}
+
+.amount-grid button{
+padding:12px;
+border:none;
+background:#eef2ff;
+border-radius:10px;
+}
+
+input{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+margin-top:10px;
+}
+
+.action-btn{
+width:100%;
+padding:15px;
+background:#4f46e5;
+color:white;
+border:none;
+border-radius:10px;
+margin-top:15px;
+}
+
+.rules{
+margin-top:20px;
+background:#f5f7ff;
+padding:15px;
+border-radius:12px;
+}
+  
 </style>
 </head>
 
@@ -320,31 +380,154 @@ Invest
 
 </div>
 
+  <!-- DEPOSIT PAGE -->
+
+<div id="depositPage" class="page">
+
+<div class="page-header">
+<h2>Deposit</h2>
 </div>
-<script>
 
-let walletBalance =
-localStorage.getItem('walletBalance') || 0;
+<div class="page-card">
 
-document.getElementById('walletBalance').innerText =
-walletBalance;
+<h3>Deposit Amount</h3>
 
-document.getElementById('mainBalance').innerText =
-walletBalance;
+<div class="amount-grid">
 
-  function investPlan(amount,days,daily){
+<button onclick="setDeposit(350)">350</button>
+<button onclick="setDeposit(1000)">1000</button>
+<button onclick="setDeposit(2500)">2500</button>
+<button onclick="setDeposit(5000)">5000</button>
+<button onclick="setDeposit(15000)">15000</button>
+<button onclick="setDeposit(30000)">30000</button>
 
-alert(
-'Investment Amount: KES ' +
-amount +
-'\nDays: ' +
-days +
-'\nDaily Income: KES ' +
-daily
-);
+</div>
 
-  }
+<input
+id="depositAmount"
+type="number"
+placeholder="Enter amount"
+/>
 
+<h3 style="margin-top:20px;">
+Till Number
+</h3>
+
+<h2 style="color:#4f46e5;">
+8808802
+</h2>
+
+<button class="action-btn">
+Deposit
+</button>
+
+</div>
+
+</div>
+
+
+<!-- WITHDRAW PAGE -->
+
+<div id="withdrawPage" class="page">
+
+<div class="page-header">
+<h2>Withdraw</h2>
+</div>
+
+<div class="page-card">
+
+<input
+id="withdrawAmount"
+type="number"
+placeholder="Amount to withdraw"
+/>
+
+<button class="action-btn">
+Withdraw
+</button>
+
+<div class="rules">
+
+<h3>Withdrawal Rules</h3>
+
+<p>Minimum withdrawal KES 350</p>
+
+<p>10% withdrawal fee</p>
+
+<p>
+Example:
+Withdraw 350 → Receive 315
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- EARNINGS PAGE -->
+
+<div id="earningsPage" class="page">
+
+<div class="page-header">
+<h2>Earnings</h2>
+</div>
+
+<div class="page-card">
+
+<h3>No Active Investments</h3>
+
+<p>
+Your investments will appear here.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- INVITE PAGE -->
+
+<div id="invitePage" class="page">
+
+<div class="page-header">
+<h2>Invite Friends</h2>
+</div>
+
+<div class="page-card">
+
+<h3>Username</h3>
+
+<p id="username">
+user123
+</p>
+
+<h3 style="margin-top:20px;">
+Referral Code
+</h3>
+
+<p id="refCode">
+QXT4L5Y
+</p>
+
+<h3 style="margin-top:20px;">
+Referral Link
+</h3>
+
+<p id="refLink">
+https://densapal.vercel.app/?ref=QXT4L5Y
+</p>
+
+<button class="action-btn">
+Copy Link
+</button>
+
+</div>
+
+</div>
+
+  
   <!-- BOTTOM NAVIGATION -->
 
 <div class="bottom-nav">
@@ -375,6 +558,30 @@ daily
 </div>
 
 </div>
+</div>
+<script>
+
+let walletBalance =
+localStorage.getItem('walletBalance') || 0;
+
+document.getElementById('walletBalance').innerText =
+walletBalance;
+
+document.getElementById('mainBalance').innerText =
+walletBalance;
+
+  function investPlan(amount,days,daily){
+
+alert(
+'Investment Amount: KES ' +
+amount +
+'\nDays: ' +
+days +
+'\nDaily Income: KES ' +
+daily
+);
+
+  }
 </script>
 
 </body>
