@@ -155,17 +155,6 @@ Deposit
 
 </div>
 
-<script>
-
-let walletBalance =
-localStorage.getItem('walletBalance') || 0;
-
-document.getElementById('walletBalance').innerText =
-walletBalance;
-
-document.getElementById('mainBalance').innerText =
-walletBalance;
-
   <!-- BASIC PLANS -->
 
 <div style="
@@ -272,18 +261,6 @@ VIP Plans
 Invest
 </button>
 
-  function investPlan(amount,days,daily){
-
-alert(
-'Investment Amount: KES ' +
-amount +
-'\nDays: ' +
-days +
-'\nDaily Income: KES ' +
-daily
-);
-
-  }
 </div>
 
 <div class="plan-card">
@@ -319,6 +296,29 @@ Invest
 </div>
 
 </div>
+<script>
+
+let walletBalance =
+localStorage.getItem('walletBalance') || 0;
+
+document.getElementById('walletBalance').innerText =
+walletBalance;
+
+document.getElementById('mainBalance').innerText =
+walletBalance;
+
+  function investPlan(amount,days,daily){
+
+alert(
+'Investment Amount: KES ' +
+amount +
+'\nDays: ' +
+days +
+'\nDaily Income: KES ' +
+daily
+);
+
+  }
 </script>
 
 </body>
