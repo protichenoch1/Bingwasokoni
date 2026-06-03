@@ -531,29 +531,27 @@ Copy Link
   
   <!-- BOTTOM NAVIGATION -->
 
-<div class="bottom-nav">
-
-<div class="nav-item">
+<div class="nav-item" onclick="showPage('homePage')">
 🏠
 <p>Home</p>
 </div>
 
-<div class="nav-item">
+<div class="nav-item" onclick="showPage('depositPage')">
 💳
 <p>Deposit</p>
 </div>
 
-<div class="nav-item">
+<div class="nav-item" onclick="showPage('withdrawPage')">
 💸
 <p>Withdraw</p>
 </div>
 
-<div class="nav-item">
+<div class="nav-item" onclick="showPage('earningsPage')">
 📈
 <p>Earnings</p>
 </div>
 
-<div class="nav-item">
+<div class="nav-item" onclick="showPage('invitePage')">
 👥
 <p>Invite</p>
 </div>
@@ -583,6 +581,27 @@ daily
 );
 
   }
+
+  function showPage(pageId){
+
+document
+.querySelectorAll('.page')
+.forEach(page => {
+
+page.classList.remove(
+'active-page'
+);
+
+});
+
+document
+.getElementById(pageId)
+.classList.add(
+'active-page'
+);
+
+  }
+  
 </script>
 
 </body>
